@@ -11,8 +11,8 @@ pipeline {
 
         stage('Stop Old Container') {
             steps {
-                bat 'docker stop kle-container || exit 0'
-                bat 'docker rm kle-container || exit 0'
+                bat 'docker stop kle-container'
+                bat 'docker rm kle-container'
             }
         }
 
