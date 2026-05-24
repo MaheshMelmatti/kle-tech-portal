@@ -3,15 +3,9 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/MaheshMelmatti/kle-tech-portal.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t kleportal .'
+                bat 'cd kle-tech-portal && docker build -t kleportal .'
             }
         }
 
