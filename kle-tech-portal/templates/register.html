@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register – KLE Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+
+    <div class="auth-logo">
+        <div class="logo-icon">KLE</div>
+        <div>
+            <h2>KLE Technological University</h2>
+            <p>Student Portal – Belagavi</p>
+        </div>
+    </div>
+
+    <h3>Student Registration</h3>
+
+    {% if error %}
+    <div class="alert-error">{{ error }}</div>
+    {% endif %}
+
+    {% if success %}
+    <div class="alert-success">{{ success }}</div>
+    {% endif %}
+
+    <form action="/register" method="POST">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="e.g. Mahesh Kumar" required>
+
+        <label>USN (University Seat Number)</label>
+        <input type="text" name="usn" placeholder="e.g. 01FE21MCS001" required>
+
+        <label>Department</label>
+        <select name="department" required>
+            <option value="" disabled selected>Select Department</option>
+            <option>Computer Science & Engineering</option>
+            <option>Electronics & Communication</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Electrical & Electronics</option>
+            <option>Information Science</option>
+        </select>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="usn@kletech.ac.in" required>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Create a password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" placeholder="Repeat your password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p class="register-link">Already registered? <a href="/login">Login here</a></p>
+    <p class="back-link"><a href="/">← Back to Home</a></p>
+
+</div>
+
+</body>
+</html>

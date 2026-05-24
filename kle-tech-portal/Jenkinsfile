@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/MaheshMelmatti/kle-tech-portal.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t kleportal .'
+            }
+        }
+
+        stage('Stop Old Container') {
+            steps {
+                bat 'docker stop kle-container || exit 0'
+                bat 'docker rm kle-container || exit 0'
+            }
+        }
+
+        stage('Run New Container') {
+            steps {
+                bat 'docker run -d --name kle-container -p 5000:5000 kleportal'
+            }
+        }
+    }
+}

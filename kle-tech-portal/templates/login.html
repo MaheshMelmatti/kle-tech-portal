@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login – KLE Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+
+    <div class="auth-logo">
+        <div class="logo-icon">KLE</div>
+        <div>
+            <h2>KLE Technological University</h2>
+            <p>Student Portal – Belagavi</p>
+        </div>
+    </div>
+
+    <h3>Student Login</h3>
+
+    {% if error %}
+    <div class="alert-error">{{ error }}</div>
+    {% endif %}
+
+    {% if success %}
+    <div class="alert-success">{{ success }}</div>
+    {% endif %}
+
+    <form action="/login" method="POST">
+        <label>USN (University Seat Number)</label>
+        <input type="text" name="usn" placeholder="e.g. 01FE21MCS001" required>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+
+        <div class="form-footer-row">
+            <label class="remember">
+                <input type="checkbox"> Remember me
+            </label>
+            <a href="#" class="forgot">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="register-link">New student? <a href="/register">Register here</a></p>
+    <p class="back-link"><a href="/">← Back to Home</a></p>
+
+</div>
+
+</body>
+</html>
